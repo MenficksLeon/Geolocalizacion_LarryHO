@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Obtener la zona de la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const zonaFiltrar = urlParams.get('zona'); // Obtiene el parámetro 'zona'
+    const zonaFiltrar = urlParams.get('zona'); // Obtiene la zona desde la URL
 
     fetch('zonas.geojson')
         .then(response => response.json())
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 onEachFeature: (feature, layer) => {
                     layer.bindPopup(`<strong>Zona:</strong> ${feature.properties.zona.trim()}`);
 
-                    // Filtrar por zona
+                    // Filtrar por zona y centrar mapa
                     if (zonaFiltrar && feature.properties.zona.trim() === zonaFiltrar) {
                         map.fitBounds(layer.getBounds());
                         layer.openPopup();

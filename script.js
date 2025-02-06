@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Obtener la zona definida en el HTML
-    const zonaFiltrar = document.getElementById("map").dataset.zona;
+    // Obtener la zona de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const zonaFiltrar = urlParams.get('zona'); // Obtiene el parámetro 'zona'
 
     fetch('zonas.geojson')
         .then(response => response.json())
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 onEachFeature: (feature, layer) => {
                     layer.bindPopup(`<strong>Zona:</strong> ${feature.properties.zona.trim()}`);
 
-                    // Si la zona en el HTML coincide con esta zona, centrar el mapa
+                    // Filtrar por zona
                     if (zonaFiltrar && feature.properties.zona.trim() === zonaFiltrar) {
                         map.fitBounds(layer.getBounds());
                         layer.openPopup();

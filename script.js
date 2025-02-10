@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const map = L.map('map').setView([-9.19, -75.0152], 6);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
+    attribution: 'Mapa creado por Larry Humpiri LK | © OpenStreetMap contributors'
     }).addTo(map);
+
 
     // Obtener la zona desde la URL
     const urlParams = new URLSearchParams(window.location.search);

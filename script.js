@@ -181,6 +181,3 @@ document.addEventListener("DOMContentLoaded", function () {
         map.addLayer(gruposLayer);
     }
 });
-ddLayer(gruposLayer);
-    }
-});

@@ -6,14 +6,41 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         #map {
-            height: 100vh;
+            height: 80vh;
             width: 100%;
+        }
+        #filters {
+            padding: 10px;
+            background: white;
+            display: flex;
+            gap: 10px;
+            position: relative;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
-    <div id="map" data-zona="ZARATE"></div> <!-- Definir zona en el atributo data-zona -->
+    <!-- Filtros -->
+    <div id="filters">
+        <label for="territorioSelect">Territorio:</label>
+        <select id="territorioSelect">
+            <option value="">Todos</option>
+        </select>
+
+        <label for="zonaSelect">Zona:</label>
+        <select id="zonaSelect">
+            <option value="">Todas</option>
+        </select>
+
+        <label for="agenciaSelect">Agencia:</label>
+        <select id="agenciaSelect">
+            <option value="">Todas</option>
+        </select>
+    </div>
+
+    <!-- Mapa -->
+    <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script.js"></script>

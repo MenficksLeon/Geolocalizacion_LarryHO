@@ -8,18 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let geojsonLayer;
     let zonasData;
     let mercadosLayer = null;
-    let gruposLayer = null;
     let mercadosData = null;
+    let gruposLayer = null;
     let gruposData = null;
 
-    // Iconos personalizados
+    // Icono personalizado para Mercados
     const mercadoIcon = L.icon({
         iconUrl: 'https://github.com/MenficksLeon/LarryHO/blob/main/Mercados.png?raw=true',
-        iconSize: [25, 25]
-    });
-
-    const grupoIcon = L.icon({
-        iconUrl: 'https://raw.githubusercontent.com/MenficksLeon/LarryHO/refs/heads/main/Korita.ico',
         iconSize: [25, 25]
     });
 
@@ -135,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .catch(error => console.error('Error cargando mercados:', error));
             }
+
             if (!gruposData) {
                 fetch('grupos.json')
                     .then(response => response.json())
@@ -173,11 +169,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         data.features.forEach(feature => {
             let coords = feature.geometry.coordinates;
-            let marker = L.marker([coords[1], coords[0]], { icon: grupoIcon })
-                .bindPopup(`<strong>Grupo:</strong> ${feature.properties.nombre}<br>Zona: ${feature.properties.zona}`);
+            let marker = L.circleMarker([coords[1], coords[0]], {
+                radius: 5,
+                color: "#007bff",
+                fillColor: "#007bff",
+                fillOpacity: 0.7
+            }).bindPopup(`<strong>Grupo:</strong> ${feature.properties.nombre}`);
             gruposLayer.addLayer(marker);
         });
 
         map.addLayer(gruposLayer);
+    }
+});
+ddLayer(gruposLayer);
     }
 });

@@ -5,25 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: 'Mapa creado por Larry Humpiri LK | © OpenStreetMap contributors'
     }).addTo(map);
 
-    let geojsonLayer, mercadosLayer, gruposLayer;
-    let zonasData, mercadosData, gruposData;
+    let geojsonLayer;
+    let zonasData;
+    let mercadosLayer = null;
+    let gruposLayer = null;
+    let mercadosData = null;
+    let gruposData = null;
 
-    // Íconos personalizados
+    // Iconos personalizados
     const mercadoIcon = L.icon({
         iconUrl: 'https://github.com/MenficksLeon/LarryHO/blob/main/Mercados.png?raw=true',
-        iconSize: [25, 25], 
-        iconAnchor: [12, 25], 
-        popupAnchor: [0, -25] 
+        iconSize: [25, 25]
     });
 
     const grupoIcon = L.icon({
         iconUrl: 'https://raw.githubusercontent.com/MenficksLeon/LarryHO/refs/heads/main/Korita.ico',
-        iconSize: [25, 25], 
-        iconAnchor: [12, 25], 
-        popupAnchor: [0, -25] 
+        iconSize: [25, 25]
     });
 
-    // Cargar zonas
+    // Cargar GeoJSON de zonas
     fetch('zonas.geojson')
         .then(response => response.json())
         .then(data => {
@@ -33,26 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error('Error cargando zonas:', error));
 
-    // Cargar mercados
-    fetch('mercados.json')
-        .then(response => response.json())
-        .then(data => {
-            mercadosData = data;
-            mostrarMercados(mercadosData);
-        })
-        .catch(error => console.error('Error cargando mercados:', error));
-
-    // Cargar grupos
-    fetch('grupos.json')
-        .then(response => response.json())
-        .then(data => {
-            gruposData = data;
-            mostrarGrupos(gruposData);
-        })
-        .catch(error => console.error('Error cargando grupos:', error));
-
     function mostrarZonas(data) {
-        if (geojsonLayer) map.removeLayer(geojsonLayer);
+        if (geojsonLayer) {
+            map.removeLayer(geojsonLayer);
+        }
 
         geojsonLayer = L.geoJSON(data, {
             style: feature => ({
@@ -68,28 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }).addTo(map);
 
         if (data.features.length > 0) {
-            map.fitBounds(geojsonLayer.getBounds());
+            let bounds = geojsonLayer.getBounds();
+            map.fitBounds(bounds);
         }
-    }
-
-    function mostrarMercados(data) {
-        if (mercadosLayer) map.removeLayer(mercadosLayer);
-
-        mercadosLayer = L.geoJSON(data, {
-            pointToLayer: (feature, latlng) => L.marker(latlng, { icon: mercadoIcon })
-        }).addTo(map);
-    }
-
-    function mostrarGrupos(data) {
-        if (gruposLayer) map.removeLayer(gruposLayer);
-
-        gruposLayer = L.geoJSON(data, {
-            pointToLayer: (feature, latlng) => L.marker(latlng, { icon: grupoIcon }),
-            onEachFeature: (feature, layer) => {
-                let props = feature.properties;
-                layer.bindPopup(`<strong>Grupo:</strong> ${props.nombre}<br>Zona: ${props.zona}`);
-            }
-        }).addTo(map);
     }
 
     function cargarFiltros(data) {
@@ -156,5 +121,63 @@ document.addEventListener("DOMContentLoaded", function () {
             if (valor === seleccionado) option.selected = true;
             select.appendChild(option);
         });
+    }
+
+    // Carga diferida de Mercados y Grupos (Lazy Load)
+    map.on('zoomend', function () {
+        if (map.getZoom() >= 10) {
+            if (!mercadosData) {
+                fetch('mercados.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        mercadosData = data;
+                        mostrarMercados(mercadosData);
+                    })
+                    .catch(error => console.error('Error cargando mercados:', error));
+            }
+            if (!gruposData) {
+                fetch('grupos.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        gruposData = data;
+                        mostrarGrupos(gruposData);
+                    })
+                    .catch(error => console.error('Error cargando grupos:', error));
+            }
+        }
+    });
+
+    function mostrarMercados(data) {
+        if (mercadosLayer) {
+            map.removeLayer(mercadosLayer);
+        }
+
+        mercadosLayer = L.layerGroup();
+
+        data.features.forEach(feature => {
+            let coords = feature.geometry.coordinates;
+            let marker = L.marker([coords[1], coords[0]], { icon: mercadoIcon })
+                .bindPopup(`<strong>Mercado:</strong> ${feature.properties.nombre}`);
+            mercadosLayer.addLayer(marker);
+        });
+
+        map.addLayer(mercadosLayer);
+    }
+
+    function mostrarGrupos(data) {
+        if (gruposLayer) {
+            map.removeLayer(gruposLayer);
+        }
+
+        gruposLayer = L.layerGroup();
+
+        data.features.forEach(feature => {
+            let coords = feature.geometry.coordinates;
+            let marker = L.marker([coords[1], coords[0]], { icon: grupoIcon })
+                .bindPopup(`<strong>Grupo:</strong> ${feature.properties.nombre}<br>Zona: ${feature.properties.zona}`);
+            gruposLayer.addLayer(marker);
+        });
+
+        map.addLayer(gruposLayer);
     }
 });

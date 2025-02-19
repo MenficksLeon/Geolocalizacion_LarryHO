@@ -5,7 +5,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 1,
-                "zona": "CERRO COLORADO                     ",
+                "zona": "CERRO COLORADO",
+                "agencia": "OFICINA PRINCIPAL",
+                "territorio": "AREQUIPA",
+                "division": "SUR",
                 "color": "#FF5733"
             },
             "geometry": {
@@ -716,7 +719,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 2,
-                "zona": "PAUCARPATA                         ",
+                "zona": "PAUCARPATA",
+                "agencia": "OFICINA PRINCIPAL",
+                "territorio": "AREQUIPA",
+                "division": "SUR",
                 "color": "#33FF57"
             },
             "geometry": {
@@ -1063,7 +1069,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 3,
-                "zona": "LOS OLIVOS-PRO                     ",
+                "zona": "LOS OLIVOS PRO",
+                "agencia": "LOS OLIVOS PRO",
+                "territorio": "LIMA NORTE",
+                "division": "NORTE",
                 "color": "#3357FF"
             },
             "geometry": {
@@ -1450,7 +1459,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 4,
-                "zona": "PUENTE PIEDRA                      ",
+                "zona": "PUENTE PIEDRA",
+                "agencia": "VENTANILLA",
+                "territorio": "LIMA NORTE",
+                "division": "NORTE",
                 "color": "#FF33A1"
             },
             "geometry": {
@@ -2681,7 +2693,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 5,
-                "zona": "COMAS                              ",
+                "zona": "COMAS",
+                "agencia": "LOS OLIVOS PRO",
+                "territorio": "LIMA NORTE",
+                "division": "NORTE",
                 "color": "#A133FF"
             },
             "geometry": {
@@ -3008,7 +3023,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 6,
-                "zona": "MI PERU                            ",
+                "zona": "MI PERU",
+                "agencia": "VENTANILLA",
+                "territorio": "LIMA NORTE",
+                "division": "NORTE",
                 "color": "#33FFF5"
             },
             "geometry": {
@@ -4319,7 +4337,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 7,
-                "zona": "VENTANILLA                         ",
+                "zona": "VENTANILLA",
+                "agencia": "VENTANILLA",
+                "territorio": "LIMA NORTE",
+                "division": "NORTE",
                 "color": "#F5FF33"
             },
             "geometry": {
@@ -4814,7 +4835,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 8,
-                "zona": "CARABAYLLO                         ",
+                "zona": "CARABAYLLO",
+                "agencia": "LOS OLIVOS PRO",
+                "territorio": "LIMA NORTE",
+                "division": "NORTE",
                 "color": "#FF3333"
             },
             "geometry": {
@@ -4973,7 +4997,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 9,
-                "zona": "CANTO GRANDE                       ",
+                "zona": "CANTO GRANDE",
+                "agencia": "SAN JUAN DE LURIGANCHO",
+                "territorio": "SAN JUAN DE LURIGANCHO",
+                "division": "NORTE",
                 "color": "#33FFBD"
             },
             "geometry": {
@@ -5356,7 +5383,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 10,
-                "zona": "PROCERES                           ",
+                "zona": "PROCERES",
+                "agencia": "SAN JUAN DE LURIGANCHO",
+                "territorio": "SAN JUAN DE LURIGANCHO",
+                "division": "NORTE",
                 "color": "#BD33FF"
             },
             "geometry": {
@@ -5507,7 +5537,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 11,
-                "zona": "ZARATE                             ",
+                "zona": "ZARATE",
+                "agencia": "SAN JUAN DE LURIGANCHO",
+                "territorio": "SAN JUAN DE LURIGANCHO",
+                "division": "NORTE",
                 "color": "#33A1FF"
             },
             "geometry": {
@@ -5670,7 +5703,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 12,
-                "zona": "SAN MARTIN DE PORRES               ",
+                "zona": "SAN MARTIN DE PORRES",
+                "agencia": "SAN MARTIN DE PORRES",
+                "territorio": "SAN JUAN DE LURIGANCHO",
+                "division": "NORTE",
                 "color": "#FFBD33"
             },
             "geometry": {
@@ -6077,7 +6113,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 13,
-                "zona": "INDEPENDENCIA                      ",
+                "zona": "INDEPENDENCIA",
+                "agencia": "SAN MARTIN DE PORRES",
+                "territorio": "SAN JUAN DE LURIGANCHO",
+                "division": "NORTE",
                 "color": "#33FF33"
             },
             "geometry": {
@@ -6248,7 +6287,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 14,
-                "zona": "RIMAC                              ",
+                "zona": "RIMAC",
+                "agencia": "SAN JUAN DE LURIGANCHO",
+                "territorio": "SAN JUAN DE LURIGANCHO",
+                "division": "NORTE",
                 "color": "#FF33F5"
             },
             "geometry": {
@@ -6359,7 +6401,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 15,
-                "zona": "PUEBLO LIBRE                       ",
+                "zona": "PUEBLO LIBRE",
+                "agencia": "SAN MARTIN DE PORRES",
+                "territorio": "SAN JUAN DE LURIGANCHO",
+                "division": "NORTE",
                 "color": "#F533FF"
             },
             "geometry": {
@@ -6450,7 +6495,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 16,
-                "zona": "VILLA EL SALVADOR                  ",
+                "zona": "VILLA EL SALVADOR",
+                "agencia": "VILLA EL SALVADOR",
+                "territorio": "LIMA SUR",
+                "division": "SUR",
                 "color": "#33FFA1"
             },
             "geometry": {
@@ -6757,7 +6805,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 17,
-                "zona": "VILLA MARIA DEL TRIUNFO            ",
+                "zona": "VILLA MARIA DEL TRIUNFO",
+                "agencia": "SAN JUAN DE MIRAFLORES",
+                "territorio": "LIMA SUR",
+                "division": "SUR",
                 "color": "#A1FF33"
             },
             "geometry": {
@@ -7520,7 +7571,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 18,
-                "zona": "SAN JUAN DE MIRAFLORES             ",
+                "zona": "SAN JUAN DE MIRAFLORES",
+                "agencia": "SAN JUAN DE MIRAFLORES",
+                "territorio": "LIMA SUR",
+                "division": "SUR",
                 "color": "#FF5733"
             },
             "geometry": {
@@ -8011,7 +8065,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 19,
-                "zona": "LURIN                              ",
+                "zona": "LURIN",
+                "agencia": "VILLA EL SALVADOR",
+                "territorio": "LIMA SUR",
+                "division": "SUR",
                 "color": "#33FF57"
             },
             "geometry": {
@@ -8226,7 +8283,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 20,
-                "zona": "CHORRILLOS                         ",
+                "zona": "CHORRILLOS",
+                "agencia": "SAN JUAN DE MIRAFLORES",
+                "territorio": "LIMA SUR",
+                "division": "SUR",
                 "color": "#3357FF"
             },
             "geometry": {
@@ -8579,7 +8639,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 21,
-                "zona": "CA\u00d1ETE                             ",
+                "zona": "CAÑETE",
+                "agencia": "CAÑETE",
+                "territorio": "SUR CHICO",
+                "division": "SUR",
                 "color": "#FF33A1"
             },
             "geometry": {
@@ -8746,7 +8809,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 22,
-                "zona": "MALA                               ",
+                "zona": "MALA",
+                "agencia": "MALA",
+                "territorio": "SUR CHICO",
+                "division": "SUR",
                 "color": "#A133FF"
             },
             "geometry": {
@@ -8845,7 +8911,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 23,
-                "zona": "JOSE LUIS BUSTAMANTE Y RIVERO      ",
+                "zona": "JOSE LUIS BUSTAMANTE Y RIVERO",
+                "agencia": "OFICINA PRINCIPAL",
+                "territorio": "AREQUIPA SUR",
+                "division": "SUR",
                 "color": "#33FFF5"
             },
             "geometry": {
@@ -9160,7 +9229,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 24,
-                "zona": "SANTA ANITA                        ",
+                "zona": "SANTA ANITA",
+                "agencia": "CARRETERA CENTRAL",
+                "territorio": "LIMA ESTE",
+                "division": "SUR",
                 "color": "#F5FF33"
             },
             "geometry": {
@@ -9383,7 +9455,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 25,
-                "zona": "ATE                                ",
+                "zona": "ATE",
+                "agencia": "CARRETERA CENTRAL",
+                "territorio": "LIMA ESTE",
+                "division": "SUR",
                 "color": "#FF3333"
             },
             "geometry": {
@@ -10182,7 +10257,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 26,
-                "zona": "HUACHIPA                           ",
+                "zona": "HUACHIPA",
+                "agencia": "HUAYCAN",
+                "territorio": "LIMA ESTE",
+                "division": "SUR",
                 "color": "#33FFBD"
             },
             "geometry": {
@@ -12465,7 +12543,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 27,
-                "zona": "HUAYCAN                            ",
+                "zona": "HUAYCAN",
+                "agencia": "HUAYCAN",
+                "territorio": "LIMA ESTE",
+                "division": "SUR",
                 "color": "#BD33FF"
             },
             "geometry": {
@@ -12944,7 +13025,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 28,
-                "zona": "MANCHAY                            ",
+                "zona": "MANCHAY",
+                "agencia": "MANCHAY",
+                "territorio": "LIMA ESTE",
+                "division": "SUR",
                 "color": "#33A1FF"
             },
             "geometry": {
@@ -13267,7 +13351,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 29,
-                "zona": "HUARAL                             ",
+                "zona": "HUARAL",
+                "agencia": "HUARAL",
+                "territorio": "NORTE CHICO",
+                "division": "NORTE",
                 "color": "#FFBD33"
             },
             "geometry": {
@@ -13438,7 +13525,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 30,
-                "zona": "HUACHO                             ",
+                "zona": "HUACHO",
+                "agencia": "HUACHO",
+                "territorio": "NORTE CHICO",
+                "division": "NORTE",
                 "color": "#33FF33"
             },
             "geometry": {
@@ -13873,7 +13963,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 31,
-                "zona": "BARRANCA                           ",
+                "zona": "BARRANCA",
+                "agencia": "BARRANCA",
+                "territorio": "NORTE CHICO",
+                "division": "NORTE",
                 "color": "#FF33F5"
             },
             "geometry": {
@@ -14164,7 +14257,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 32,
-                "zona": "CAMANA                             ",
+                "zona": "CAMANA",
+                "agencia": "CAMANA",
+                "territorio": "AREQUIPA SUR",
+                "division": "SUR",
                 "color": "#BD33FF"
             },
             "geometry": {
@@ -14263,7 +14359,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 33,
-                "zona": "PEDREGAL                           ",
+                "zona": "PEDREGAL",
+                "agencia": "PEDREGAL",
+                "territorio": "AREQUIPA SUR",
+                "division": "SUR",
                 "color": "#33A1FF"
             },
             "geometry": {
@@ -14450,7 +14549,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 34,
-                "zona": "MOLLENDO                           ",
+                "zona": "MOLLENDO",
+                "agencia": "MOLLENDO",
+                "territorio": "AREQUIPA SUR",
+                "division": "SUR",
                 "color": "#FFBD33"
             },
             "geometry": {
@@ -14823,7 +14925,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 35,
-                "zona": "ICA SUR                            ",
+                "zona": "ICA SUR",
+                "agencia": "ICA",
+                "territorio": "SUR CHICO",
+                "division": "SUR",
                 "color": "#BD33FF"
             },
             "geometry": {
@@ -14974,7 +15079,10 @@
             "type": "Feature",
             "properties": {
                 "id_zona": 36,
-                "zona": "ICA NORTE                          ",
+                "zona": "ICA NORTE",
+                "agencia": "ICA",
+                "territorio": "SUR CHICO",
+                "division": "SUR",
                 "color": "#33A1FF"
             },
             "geometry": {

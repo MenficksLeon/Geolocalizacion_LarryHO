@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let geojsonLayer;
     let zonasData;
 
+    const zonasExcluidas = new Set([
+        "PEDREGAL", "CAMANA", "MOLLENDO",
+        "JOSE LUIS BUSTAMANTE Y RIVERO",
+        "CERRO COLORADO", "PAUCARPATA"
+    ]);
+
     // Cargar GeoJSON
     fetch('zonas.geojson')
         .then(response => response.json())
@@ -32,6 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
             }),
             onEachFeature: (feature, layer) => {
                 let props = feature.properties;
+
+                // Si es un mercado, no mostrar popup
+                if (props.tipo === "mercado") {
+                    return;
+                }
+
+                // Si es un grupo y está en una de las zonas excluidas, no agregarlo
+                if (props.tipo === "grupo" && zonasExcluidas.has(props.zona)) {
+                    return;
+                }
+
                 layer.bindPopup(`<strong>${props.zona}</strong><br>Agencia: ${props.agencia}<br>Territorio: ${props.territorio}`);
             }
         }).addTo(map);
@@ -75,15 +92,22 @@ document.addEventListener("DOMContentLoaded", function () {
         let datosFiltrados = {
             type: "FeatureCollection",
             features: zonasData.features.filter(feature => {
-                let pertenece = 
-                    (territorioSeleccionado === "" || feature.properties.territorio === territorioSeleccionado) &&
-                    (agenciaSeleccionada === "" || feature.properties.agencia === agenciaSeleccionada) &&
-                    (zonaSeleccionada === "" || feature.properties.zona === zonaSeleccionada);
+                let props = feature.properties;
+
+                let pertenece =
+                    (territorioSeleccionado === "" || props.territorio === territorioSeleccionado) &&
+                    (agenciaSeleccionada === "" || props.agencia === agenciaSeleccionada) &&
+                    (zonaSeleccionada === "" || props.zona === zonaSeleccionada);
+
+                // Excluir grupos de las zonas no permitidas
+                if (props.tipo === "grupo" && zonasExcluidas.has(props.zona)) {
+                    return false;
+                }
 
                 if (pertenece) {
-                    territorios.add(feature.properties.territorio);
-                    agencias.add(feature.properties.agencia);
-                    zonas.add(feature.properties.zona);
+                    territorios.add(props.territorio);
+                    agencias.add(props.agencia);
+                    zonas.add(props.zona);
                 }
 
                 return pertenece;
@@ -99,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function llenarSelect(id, valores, seleccionado = "") {
         let select = document.getElementById(id);
-        select.innerHTML = '<option value="">Todos</option>'; 
+        select.innerHTML = '<option value="">Todos</option>';
         valores.forEach(valor => {
             let option = document.createElement("option");
             option.value = valor;

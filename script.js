@@ -5,10 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: 'Mapa creado por Larry Humpiri LK | © OpenStreetMap contributors'
     }).addTo(map);
 
-    let geojsonLayer;
-    let zonasData;
+    let geojsonLayer, mercadosLayer, gruposLayer;
+    let zonasData, mercadosData, gruposData;
 
-    // Cargar GeoJSON
+    // Íconos personalizados
+    const mercadoIcon = L.icon({
+        iconUrl: 'https://github.com/MenficksLeon/LarryHO/blob/main/Mercados.png?raw=true',
+        iconSize: [25, 25], 
+        iconAnchor: [12, 25], 
+        popupAnchor: [0, -25] 
+    });
+
+    const grupoIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/MenficksLeon/LarryHO/refs/heads/main/Korita.ico',
+        iconSize: [25, 25], 
+        iconAnchor: [12, 25], 
+        popupAnchor: [0, -25] 
+    });
+
+    // Cargar zonas
     fetch('zonas.geojson')
         .then(response => response.json())
         .then(data => {
@@ -18,10 +33,26 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error('Error cargando zonas:', error));
 
+    // Cargar mercados
+    fetch('mercados.json')
+        .then(response => response.json())
+        .then(data => {
+            mercadosData = data;
+            mostrarMercados(mercadosData);
+        })
+        .catch(error => console.error('Error cargando mercados:', error));
+
+    // Cargar grupos
+    fetch('grupos.json')
+        .then(response => response.json())
+        .then(data => {
+            gruposData = data;
+            mostrarGrupos(gruposData);
+        })
+        .catch(error => console.error('Error cargando grupos:', error));
+
     function mostrarZonas(data) {
-        if (geojsonLayer) {
-            map.removeLayer(geojsonLayer);
-        }
+        if (geojsonLayer) map.removeLayer(geojsonLayer);
 
         geojsonLayer = L.geoJSON(data, {
             style: feature => ({
@@ -37,9 +68,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }).addTo(map);
 
         if (data.features.length > 0) {
-            let bounds = geojsonLayer.getBounds();
-            map.fitBounds(bounds);
+            map.fitBounds(geojsonLayer.getBounds());
         }
+    }
+
+    function mostrarMercados(data) {
+        if (mercadosLayer) map.removeLayer(mercadosLayer);
+
+        mercadosLayer = L.geoJSON(data, {
+            pointToLayer: (feature, latlng) => L.marker(latlng, { icon: mercadoIcon })
+        }).addTo(map);
+    }
+
+    function mostrarGrupos(data) {
+        if (gruposLayer) map.removeLayer(gruposLayer);
+
+        gruposLayer = L.geoJSON(data, {
+            pointToLayer: (feature, latlng) => L.marker(latlng, { icon: grupoIcon }),
+            onEachFeature: (feature, layer) => {
+                let props = feature.properties;
+                layer.bindPopup(`<strong>Grupo:</strong> ${props.nombre}<br>Zona: ${props.zona}`);
+            }
+        }).addTo(map);
     }
 
     function cargarFiltros(data) {
@@ -57,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
         llenarSelect("agencia", agencias);
         llenarSelect("zona", zonas);
 
-        // Eventos de cambio en los filtros
         document.getElementById("territorio").addEventListener("change", actualizarFiltros);
         document.getElementById("agencia").addEventListener("change", actualizarFiltros);
         document.getElementById("zona").addEventListener("change", actualizarFiltros);
@@ -109,4 +158,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
